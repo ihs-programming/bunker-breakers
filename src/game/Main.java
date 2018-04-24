@@ -8,7 +8,7 @@ public class Main {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.title = "Bunker Busters";
 		config.width = 800;
-		config.height = 800;
+		config.height = 600;
 		new LwjglApplication(new GDXGame(), config);
 	}
 }
