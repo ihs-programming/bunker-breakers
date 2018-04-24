@@ -8,7 +8,11 @@
 			<attribute name="javadoc_location" value="jar:platform:/resource/eclipse-gdx/lib/libgdx/docs/api.zip!/api"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/libgdx/jars/gdx-backend-lwjgl-1.9.8.jar"/>
+	<classpathentry kind="lib" path="lib/libgdx/jars/gdx-backend-lwjgl-1.9.8.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/bunker-breakers/lib/libgdx/docs/api.zip!/api"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="lib/libgdx/jars/gdx-box2d-1.9.8.jar"/>
 	<classpathentry kind="lib" path="lib/libgdx/jars/gdx-box2d-platform-1.9.8-natives-desktop.jar"/>
 	<classpathentry kind="lib" path="lib/libgdx/jars/gdx-platform-1.9.8-natives-desktop.jar"/>
