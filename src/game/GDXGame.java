@@ -4,15 +4,15 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.physics.box2d.Box2D;
 
 public class GDXGame extends Game {
 	private SpriteBatch batch;
-	private TextureRegion img;
 	private Character mc = new Character();
 
 	@Override
 	public void create() {
+		Box2D.init();
 		batch = new SpriteBatch();
 	}
 
