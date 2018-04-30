@@ -4,16 +4,21 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 public class GDXGame extends Game {
 	private SpriteBatch batch;
-	private TextureRegion img;
+	private ShapeRenderer shapeRenderer;
+	private GameWorld world;
 	private Character mc = new Character();
 
 	@Override
 	public void create() {
+		world = new GameWorld();
+		world.addGameObject(mc);
+
 		batch = new SpriteBatch();
+		shapeRenderer = new ShapeRenderer();
 	}
 
 	@Override
@@ -22,7 +27,7 @@ public class GDXGame extends Game {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		batch.begin();
-		mc.draw(batch);
+		world.draw(batch);
 		batch.end();
 	}
 
