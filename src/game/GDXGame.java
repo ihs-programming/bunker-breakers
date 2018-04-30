@@ -27,7 +27,7 @@ public class GDXGame extends Game {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		batch.begin();
-		world.draw(batch);
+		world.draw(batch, shapeRenderer);
 		batch.end();
 	}
 
