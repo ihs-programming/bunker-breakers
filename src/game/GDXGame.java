@@ -11,6 +11,8 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import game.components.GameObject;
 
 public class GDXGame extends Game {
+	public static boolean DEBUG_MODE = true;
+
 	private SpriteBatch batch;
 	private ShapeRenderer shapeRenderer;
 	private GameWorld world;

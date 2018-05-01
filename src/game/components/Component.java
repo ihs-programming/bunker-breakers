@@ -3,6 +3,8 @@ package game.components;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
+import game.GameWorld;
+
 public abstract class Component {
 	protected GameObject gameObject = null;
 
@@ -14,6 +16,8 @@ public abstract class Component {
 	}
 
 	public void draw(SpriteBatch sbatch, ShapeRenderer sr) {
+	}
 
+	public void updateWorld(GameWorld newWorld) {
 	}
 }

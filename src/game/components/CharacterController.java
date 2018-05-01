@@ -1,5 +1,7 @@
 package game.components;
 
+import java.util.Optional;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Vector2;
@@ -20,6 +22,13 @@ public class CharacterController extends Component {
 		if (Gdx.input.isKeyPressed(Input.Keys.D)) {
 			movement.x += 1;
 		}
-		gameObject.position.add(movement);
+		movement.scl(1000f);
+		Optional<PhysicsBodyComponent> bodyComp = gameObject.getComponent(PhysicsBodyComponent.class);
+		if (bodyComp.isPresent()) {
+			PhysicsBodyComponent pbc = bodyComp.get();
+			pbc.setVelocity(movement);
+		} else {
+			gameObject.position.add(movement);
+		}
 	}
 }

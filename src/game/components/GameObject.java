@@ -59,5 +59,18 @@ public class GameObject {
 
 	public void setWorld(GameWorld world) {
 		this.world = world;
+		for (Component c : components) {
+			c.updateWorld(world);
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public <T extends Component> Optional<T> getComponent(Class<T> compType) {
+		for (Component c : components) {
+			if (compType.isInstance(c)) {
+				return Optional.of((T) c);
+			}
+		}
+		return Optional.empty();
 	}
 }
