@@ -1,24 +1,32 @@
 package game;
 
+import java.util.Optional;
+
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
+import game.components.GameObject;
+
 public class GDXGame extends Game {
 	private SpriteBatch batch;
 	private ShapeRenderer shapeRenderer;
 	private GameWorld world;
-	private Character mc = new Character();
+
+	private long prevTime = 0;
 
 	@Override
 	public void create() {
 		world = new GameWorld();
-		world.addGameObject(mc);
+		GameObject character = new GameObject(Optional.empty(), world);
+		world.addGameObject(CharacterFactory.createCharacter(character));
 
 		batch = new SpriteBatch();
 		shapeRenderer = new ShapeRenderer();
+
+		prevTime = System.currentTimeMillis();
 	}
 
 	@Override
@@ -29,29 +37,15 @@ public class GDXGame extends Game {
 		batch.begin();
 		world.draw(batch, shapeRenderer);
 		batch.end();
+
+		int delta = (int) (System.currentTimeMillis() - prevTime);
+		world.update(delta);
+		prevTime = System.currentTimeMillis();
 	}
 
 	@Override
 	public void dispose() {
 		batch.dispose();
 		TextureLoader.defaultLoader.dispose();
-	}
-
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void resize(int arg0, int arg1) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
-
 	}
 }
