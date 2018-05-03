@@ -9,6 +9,8 @@ import game.components.PhysicsBodyComponent;
 import game.components.SpriteComponent;
 
 public class CharacterFactory {
+	public static final float DEFAULT_CHARACTER_HEIGHT = 1.5f;
+
 	public static GameObject createCharacter(GameObject emptyObject) {
 		emptyObject.addComponent(new SpriteComponent(TextureLoader.defaultLoader.getCharacterSprite(0, 0)));
 		emptyObject.addComponent(new CharacterController());

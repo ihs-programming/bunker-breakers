@@ -63,6 +63,7 @@ public class GameObject {
 
 	public void addComponent(Component c) {
 		c.setGameObject(this);
+		c.updateWorld(world);
 		components.add(c);
 	}
 
@@ -71,6 +72,21 @@ public class GameObject {
 		for (Component c : components) {
 			c.updateWorld(world);
 		}
+	}
+
+	public GameObject createChild() {
+		GameObject child = new GameObject(Optional.of(this), world);
+		addChild(child);
+		return child;
+	}
+
+	public void addChild(GameObject gobj) {
+		gobj.parent = Optional.of(this);
+		children.add(gobj);
+	}
+
+	public void removeChild(GameObject gobj) {
+		children.remove(gobj);
 	}
 
 	@SuppressWarnings("unchecked")

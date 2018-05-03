@@ -24,6 +24,7 @@ public class GDXGame extends Game {
 		world = new GameWorld();
 		GameObject character = new GameObject(Optional.empty(), world);
 		world.addGameObject(CharacterFactory.createCharacter(character));
+		world.addGameObject(WorldGenerator.generateWorldMap(new GameObject(Optional.empty(), world)));
 
 		batch = new SpriteBatch();
 		shapeRenderer = new ShapeRenderer();
@@ -34,11 +35,10 @@ public class GDXGame extends Game {
 	@Override
 	public void render() {
 		Gdx.gl.glClearColor(135f / 255, 206f / 255, 250f / 255, 1);
+		Gdx.gl.glClearColor(0f, 0f, 0f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		batch.begin();
 		world.draw(batch, shapeRenderer);
-		batch.end();
 
 		int delta = (int) (System.currentTimeMillis() - prevTime);
 		world.update(delta);
