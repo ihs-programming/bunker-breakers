@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public class SpriteComponent extends Component {
 
-	private Sprite sprite;
+	public Sprite sprite;
 
 	public SpriteComponent(Sprite sprite) {
 		this.sprite = sprite;

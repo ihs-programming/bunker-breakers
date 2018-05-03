@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
@@ -24,7 +23,7 @@ public class GameWorld {
 	public static final int POSITION_ITERATIONS = 2;
 	public static final int PHYSICS_TIME_STEP = 16;
 
-	public World physicsWorld = new World(new Vector2(), true);
+	public World physicsWorld = new World(new Vector2(0f, -9.8f), true);
 	private int physicsUpdateAccumulator = 0;
 	public final Camera camera;
 
@@ -45,11 +44,12 @@ public class GameWorld {
 	}
 
 	public void draw(SpriteBatch batch, ShapeRenderer sr) {
+		camera.update();
+		if (GDXGame.DEBUG_MODE) {
+			debugRenderer.render(physicsWorld, camera.combined);
+		}
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
-		if (GDXGame.DEBUG_MODE) {
-			debugRenderer.render(physicsWorld, new Matrix4(camera.combined));
-		}
 		for (GameObject g : gameObjects) {
 			g.draw(batch, sr);
 		}
