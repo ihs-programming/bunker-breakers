@@ -26,7 +26,7 @@ public class GameWorld {
 
 	public World physicsWorld = new World(new Vector2(), true);
 	private int physicsUpdateAccumulator = 0;
-	private Camera camera;
+	public final Camera camera;
 
 	public List<GameObject> gameObjects = new ArrayList<>();
 

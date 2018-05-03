@@ -40,8 +40,12 @@ public class PhysicsBodyComponent extends Component {
 
 	@Override
 	public void updateWorld(GameWorld world) {
+		if (rb != null && world.physicsWorld == rb.getWorld()) {
+			return;
+		}
 		rb = world.physicsWorld.createBody(createBodyDef());
 		rb.createFixture(createFixtureDef());
+		rb.setTransform(gameObject.position, 0f);
 	}
 
 	private BodyDef createBodyDef() {

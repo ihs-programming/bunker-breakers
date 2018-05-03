@@ -7,6 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Vector2;
 
 import game.components.GameObject;
 
@@ -23,6 +24,7 @@ public class GDXGame extends Game {
 	public void create() {
 		world = new GameWorld();
 		GameObject character = new GameObject(Optional.empty(), world);
+		character.setPosition(new Vector2(5, 5));
 		world.addGameObject(CharacterFactory.createCharacter(character));
 		world.addGameObject(WorldGenerator.generateWorldMap(new GameObject(Optional.empty(), world)));
 

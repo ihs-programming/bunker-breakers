@@ -72,6 +72,9 @@ public class GameObject {
 		for (Component c : components) {
 			c.updateWorld(world);
 		}
+		for (GameObject c : children) {
+			c.setWorld(world);
+		}
 	}
 
 	public GameObject createChild() {
@@ -97,5 +100,9 @@ public class GameObject {
 			}
 		}
 		return Optional.empty();
+	}
+
+	public void setPosition(Vector2 pos) {
+		position.set(pos);
 	}
 }
