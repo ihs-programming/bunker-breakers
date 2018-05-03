@@ -41,6 +41,15 @@ public class GameObject {
 		}
 	}
 
+	public void postPhysicsUpdate() {
+		for (Component comp : components) {
+			comp.postPhysicsUpdate();
+		}
+		for (GameObject gobj : children) {
+			gobj.postPhysicsUpdate();
+		}
+	}
+
 	public Vector2 getRelativePos() {
 		return new Vector2(position);
 	}

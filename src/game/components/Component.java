@@ -15,6 +15,9 @@ public abstract class Component {
 	public void update(int ms) {
 	}
 
+	public void postPhysicsUpdate() {
+	}
+
 	public void draw(SpriteBatch sbatch, ShapeRenderer sr) {
 	}
 

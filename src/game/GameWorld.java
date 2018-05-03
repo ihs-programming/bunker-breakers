@@ -49,6 +49,9 @@ public class GameWorld {
 			gobj.update(ms);
 		}
 		updatePhysicWorld(ms);
+		for (GameObject gobj : gameObjects) {
+			gobj.postPhysicsUpdate();
+		}
 	}
 
 	private void updatePhysicWorld(int ms) {

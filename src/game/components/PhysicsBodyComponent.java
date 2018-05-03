@@ -22,6 +22,11 @@ public class PhysicsBodyComponent extends Component {
 	 */
 	@Override
 	public void update(int delta) {
+		rb.setTransform(gameObject.position, rb.getAngle());
+	}
+
+	@Override
+	public void postPhysicsUpdate() {
 		gameObject.position = rb.getPosition();
 	}
 

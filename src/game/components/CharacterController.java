@@ -27,8 +27,6 @@ public class CharacterController extends Component {
 		if (bodyComp.isPresent()) {
 			PhysicsBodyComponent pbc = bodyComp.get();
 			pbc.setVelocity(movement);
-		} else {
-			gameObject.position.add(movement);
 		}
 	}
 }
