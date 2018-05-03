@@ -20,13 +20,16 @@ public class CharacterFactory {
 
 	private static Shape getCharacterHitboxShape() {
 		PolygonShape pshape = new PolygonShape();
-		pshape.setAsBox(1f, 1f);
+		pshape.setAsBox(2f, 2f);
 		return pshape;
 	}
 
 	private static SpriteComponent createResizedSprite() {
 		SpriteComponent sc = new SpriteComponent(TextureLoader.defaultLoader.getCharacterSprite(0, 0));
 		Shape hitbox = getCharacterHitboxShape();
+		float maxdiameter = Math.max(sc.sprite.getHeight(), sc.sprite.getWidth());
+		sc.sprite.setScale(Geometry.getRadius(hitbox) / maxdiameter / 2f);
+		sc.sprite.setScale(.1f);
 		return sc;
 	}
 }

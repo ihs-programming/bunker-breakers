@@ -32,7 +32,7 @@ public class GameWorld {
 	private Box2DDebugRenderer debugRenderer;
 
 	public GameWorld() {
-		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		camera = new OrthographicCamera(40f, 40f * Gdx.graphics.getWidth() / Gdx.graphics.getHeight());
 		if (GDXGame.DEBUG_MODE) {
 			debugRenderer = new Box2DDebugRenderer();
 		}
@@ -49,10 +49,14 @@ public class GameWorld {
 			debugRenderer.render(physicsWorld, camera.combined);
 		}
 		batch.setProjectionMatrix(camera.combined);
+		sr.setProjectionMatrix(camera.combined);
+		sr.setAutoShapeType(true);
 		batch.begin();
+		sr.begin();
 		for (GameObject g : gameObjects) {
 			g.draw(batch, sr);
 		}
+		sr.end();
 		batch.end();
 	}
 

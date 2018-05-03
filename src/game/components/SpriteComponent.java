@@ -16,6 +16,7 @@ public class SpriteComponent extends Component {
 	@Override
 	public void draw(SpriteBatch sb, ShapeRenderer sr) {
 		Vector2 p = gameObject.getAbsolutePos();
-		sb.draw(sprite, p.x, p.y);
+		sprite.setPosition(p.x, p.y);
+		sprite.draw(sb);
 	}
 }
