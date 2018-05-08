@@ -12,7 +12,8 @@ import com.badlogic.gdx.physics.box2d.Shape;
 import game.GameWorld;
 
 public class PhysicsBodyComponent extends Component {
-	private Body rb;
+	public final float EPSILON = 1e-5f;
+	public Body rb;
 	private Shape shape;
 
 	private Optional<BodyDef> customBodyDef = Optional.empty();
@@ -30,7 +31,10 @@ public class PhysicsBodyComponent extends Component {
 
 	@Override
 	public void update(int delta) {
-		rb.setTransform(gameObject.position, rb.getAngle());
+		Vector2 curpos = gameObject.getAbsolutePos();
+		if (curpos.sub(rb.getPosition()).len2() > EPSILON * EPSILON) {
+			rb.setTransform(gameObject.position, rb.getAngle());
+		}
 	}
 
 	@Override

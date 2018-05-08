@@ -32,7 +32,7 @@ public class GameWorld {
 	private Box2DDebugRenderer debugRenderer;
 
 	public GameWorld() {
-		camera = new OrthographicCamera(40f, 40f / Gdx.graphics.getWidth() * Gdx.graphics.getHeight());
+		camera = new OrthographicCamera(100f, 100f / Gdx.graphics.getWidth() * Gdx.graphics.getHeight());
 		if (GDXGame.DEBUG_MODE) {
 			debugRenderer = new Box2DDebugRenderer();
 		}

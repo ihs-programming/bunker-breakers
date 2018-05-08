@@ -22,7 +22,7 @@ public class CharacterController extends Component {
 		if (Gdx.input.isKeyPressed(Input.Keys.D)) {
 			movement.x += 1;
 		}
-		movement.scl(1000f);
+		movement.scl(500f);
 		Optional<PhysicsBodyComponent> bodyComp = gameObject.getComponent(PhysicsBodyComponent.class);
 		if (bodyComp.isPresent()) {
 			PhysicsBodyComponent pbc = bodyComp.get();
